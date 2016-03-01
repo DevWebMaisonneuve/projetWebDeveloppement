@@ -545,7 +545,8 @@ public function afficheInfoArtiste($artisteResultat, $oeuvresListe) {
                                         echo "<div class='cbp-l-caption-alignCenter'>";
                                             echo "<div class='cbp-l-caption-body'>";
                                                 echo "<ul class='link-captions'>";
-                                                    echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                    //echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                    echo "<li><a href='index.php?page=infoOeuvre&idOeuvre=$oeuvre->idOeuvre'><i class='rounded-x fa fa-search'></i></a></li>";
                                                 echo "</ul>";
                                                 echo "<div class='cbp-l-grid-agency-title'>$oeuvre->titre</div>";
                                           echo  "</div>";
@@ -790,6 +791,7 @@ public function afficheGeolocalisation() {
      */
 
 public function afficheInfoOeuvre($oeuvreInfo, $artisteResultat, $listeMat, $categorie, $adresse, $photosOeuvre) {
+    
         ?>
 
                     
@@ -883,6 +885,8 @@ public function afficheInfoOeuvre($oeuvreInfo, $artisteResultat, $listeMat, $cat
 
                         echo '<p>Catégorie : '. $categorie['NomSousCat']. '</p>';
                         echo '<p>Adresse : '. $adresse['NumRue'] . ' ' . $adresse['Rue']. ' ' . $adresse['Ville']. '</p>';
+                        echo '<p>Description : '. $oeuvreInfo['description'] . '</p>';  
+
 
                         ?>
 
@@ -1072,7 +1076,8 @@ public function afficheRecherche($resultatPhotoOeuvresEtTitre, $categories, $art
                                     echo "<div class='cbp-l-caption-alignCenter'>";
                                         echo "<div class='cbp-l-caption-body'>";
                                             echo "<ul class='link-captions'>";
-                                                echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                //echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                echo "<li><a href='index.php?page=infoOeuvre&idOeuvre=$oeuvre->idOeuvre'><i class='rounded-x fa fa-search'></i></a></li>";
                                             echo "</ul>";
                                             echo "<div class='cbp-l-grid-agency-title'>$oeuvre->titre</div>";
                                         echo  "</div>";
@@ -1146,7 +1151,8 @@ public function afficheOeuvresParIdArtistes($ResultatArtiste, $ResultatTitresPho
                                     echo "<div class='cbp-l-caption-alignCenter'>";
                                         echo "<div class='cbp-l-caption-body'>";
                                             echo "<ul class='link-captions'>";
-                                                echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                //echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                echo "<li><a href='index.php?page=infoOeuvre&idOeuvre=$oeuvre->idOeuvre'><i class='rounded-x fa fa-search'></i></a></li>";
                                             echo "</ul>";
                                             echo "<div class='cbp-l-grid-agency-title'>$oeuvre->titre</div>";
                                         echo  "</div>";
@@ -1210,7 +1216,8 @@ public function afficheOeuvresParNomCategorie($ResultatTitresPhotosOeuvres, $Nom
                                                     echo "<div class='cbp-l-caption-alignCenter'>";
                                                         echo "<div class='cbp-l-caption-body'>";
                                                             echo "<ul class='link-captions'>";
-                                                                echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                                //echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                                echo "<li><a href='index.php?page=infoOeuvre&idOeuvre=$oeuvre->idOeuvre'><i class='rounded-x fa fa-search'></i></a></li>";
                                                             echo "</ul>";
                                                             echo "<div class='cbp-l-grid-agency-title'>$oeuvre->titre</div>";
                                                         echo  "</div>";
@@ -1279,7 +1286,8 @@ public function afficheOeuvresParNomMateriaux($ResultatTitresPhotosOeuvres, $Nom
                                                     echo "<div class='cbp-l-caption-alignCenter'>";
                                                         echo "<div class='cbp-l-caption-body'>";
                                                             echo "<ul class='link-captions'>";
-                                                                echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                                //echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                                echo "<li><a href='index.php?page=infoOeuvre&idOeuvre=$oeuvre->idOeuvre'><i class='rounded-x fa fa-search'></i></a></li>";
                                                             echo "</ul>";
                                                             echo "<div class='cbp-l-grid-agency-title'>$oeuvre->titre</div>";
                                                         echo  "</div>";
@@ -1349,7 +1357,8 @@ public function afficheOeuvresParNomArrondissement($ResultatTitresPhotosOeuvres,
                                                     echo "<div class='cbp-l-caption-alignCenter'>";
                                                         echo "<div class='cbp-l-caption-body'>";
                                                             echo "<ul class='link-captions'>";
-                                                                echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                                //echo "<li><a href='index.php?page=infoOeuvre&titreOeuvre=$oeuvre->titre'><i class='rounded-x fa fa-search'></i></a></li>";
+                                                                echo "<li><a href='index.php?page=infoOeuvre&idOeuvre=$oeuvre->idOeuvre'><i class='rounded-x fa fa-search'></i></a></li>";
                                                             echo "</ul>";
                                                             echo "<div class='cbp-l-grid-agency-title'>$oeuvre->titre</div>";
                                                         echo  "</div>";
