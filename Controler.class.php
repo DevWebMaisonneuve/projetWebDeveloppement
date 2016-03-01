@@ -113,7 +113,7 @@ class Controler
             $mat = new Materiaux("","","");
             //liste des materiaux
             $listeMat = $mat->afficheListeMateriaux();
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             //Liste des arrondissements
             $listeArrondissement = $oeuvre->afficheListeArrondissement();
             $oVue->Vheader($geolocalisation);
@@ -135,7 +135,7 @@ class Controler
             
             $erreur = '';
             $oVue = new Vue();
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             $cat= new Categorie("", "", "", "", "", "");
             //Liste des Oeuvres par categories
 
@@ -192,7 +192,7 @@ class Controler
             $geolocalisation = false;
         
         $oVue = new Vue();
-        $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+        $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
 
 
         //Liste des arrondissements
@@ -254,7 +254,7 @@ class Controler
             $dernierIdAdresse=$unAdresse->recupererDernierId();
 
 
-          $uneOeuvre = new Oeuvre("",$_POST["titre"], "","", "", "","","", $_POST["arrondissement"], $_POST["latitude"], $_POST["longitud"], "", $dernierIdAdresse, $_POST["artisteOeuvre"], $_POST["categorieOeuvre"], "");
+          $uneOeuvre = new Oeuvre("",$_POST["titre"], "","", "", "","","", $_POST["arrondissement"], $_POST["latitude"], $_POST["longitud"], "", $dernierIdAdresse, $_POST["artisteOeuvre"], $_POST["categorieOeuvre"], "","");
 
             $uneOeuvre->enregistreOuvres();
           
@@ -311,7 +311,7 @@ class Controler
             // Boolean pour appeler ou non le script de geo
             $geolocalisation = true;
             $oVue = new Vue();
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             $oeuvresCoordonnees = $oeuvre->recupLocalisationOeuvres();
             $docXML=$oeuvre->creationXMLCoordonnesOeuvres($oeuvresCoordonnees);
             $oVue->Vheader($geolocalisation);
@@ -334,7 +334,7 @@ class Controler
             // On recupere l'id de l'artiste passé en param
             $idArtiste = intval($_GET['artiste']);
             $artiste = new Artiste("","","","","");
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             // Appel de la fonction d'affichage des informations d'un artiste grace à son id
 
             $artisteResultat = $artiste->afficheArtisteParId($idArtiste);
@@ -357,10 +357,13 @@ class Controler
             
             $oVue = new Vue();
             $oVue->Vheader($geolocalisation);
-            // On recupere l'id de l'artiste passé en param
+            // On recupere l'id de l'oeuvre passé en param
             $idOeuvre = $_GET['idOeuvre'];
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "", "", "", "");
+//            $titreOeuvre = $_GET['titreOeuvre'];
+            //var_dump($idOeuvre);
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "", "", "", "","");
             $oeuvreInfo = $oeuvre->afficheInformationsOeuvre($idOeuvre);
+            //var_dump($oeuvreInfo);
             $artiste = new Artiste("","","","","");
             $artisteResultat = $artiste->afficheArtisteDuneOeuvre($idOeuvre);
             $mat = new Materiaux("","","");
@@ -372,7 +375,7 @@ class Controler
             $adresse = new Adresse("", "", "", "");
             //liste des materiaux
             $adresse = $adresse->afficheAdresseDuneOeuvre($idOeuvre);
-            $photoOeuvre = new photoOeuvre("","","","","","","","","","","","","","", "","","", "");
+            $photoOeuvre = new photoOeuvre("","","","","","","","","","","","","","","","","","","");
             //liste des materiaux
             $photosOeuvre = $photoOeuvre->affichePhotoOeuvre($idOeuvre);
             $oVue->afficheInfoOeuvre($oeuvreInfo, $artisteResultat, $listeMat, $categorie, $adresse, $photosOeuvre);
@@ -408,8 +411,8 @@ class Controler
             $listeMat = $mat->afficheListeMateriaux();
 
             // connection
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "", "", "", "");
-            $photoOeuvre = new photoOeuvre("","","","","","","","","","","","","","", "","","", "");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "", "", "", "","");
+            $photoOeuvre = new photoOeuvre("","","","","","","","","","","","","","", "","","", "","");
 
             // On recupere tous titres et les photos des oeuvres
             $resultatPhotoOeuvresEtTitre = $photoOeuvre->afficheToutesLesPhotos();
@@ -517,7 +520,7 @@ class Controler
         {
         $oVue = new VueAdmin();
      
-        $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+        $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
 
 
         //Liste des arrondissements
@@ -570,7 +573,7 @@ class Controler
             $dernierIdAdresse=$unAdresse->recupererDernierId();
 
 
-          $uneOeuvre = new Oeuvre("",$_POST["titre"], "","", "", "","","", $_POST["arrondissement"], $_POST["latitude"], $_POST["longitud"], "", $dernierIdAdresse, $_POST["artisteOeuvre"], $_POST["categorieOeuvre"], "");
+          $uneOeuvre = new Oeuvre("",$_POST["titre"], "","", "", "","","", $_POST["arrondissement"], $_POST["latitude"], $_POST["longitud"], "", $dernierIdAdresse, $_POST["artisteOeuvre"], $_POST["categorieOeuvre"], "","");
 
             $uneOeuvre->enregistreOuvresAdmin();
           
@@ -625,7 +628,7 @@ class Controler
         private function adminGereOeuvres()
         {
             $oVue = new VueAdmin();
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             $listeOeuvres=$oeuvre->afficheOeuvres();
             $oVue->AdminTopPage();
             $oVue->adminNavSide();
@@ -660,7 +663,7 @@ class Controler
 
             $idOeuvre = intval($_GET['idOeuvre']);
      
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             $infoOeuvre= $oeuvre->afficherUneOeuvre($idOeuvre);
             
             $mat=new Materiaux("", "", "");
@@ -699,45 +702,45 @@ class Controler
                 {
 
                 
-                          $titre=$_POST["titre"];
-                          $titreVariante=$_POST["titreVariante"];
-                          $collection=$_POST["collection"];
-                          $technique=$_POST["technique"];
-                          $dimensions=$_POST["dimensions"];
-                          $arrondissement=$_POST["arrondissement"];
-                          $coordonneeLatitude=floatval($_POST["coordonneeLatitude"]);
-                          $coordonneeLongitude=floatval($_POST["coordonneeLongitude"]);
-                
-                
-                
-                          $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
-                          $oeuvre->modifieUneOeuvre($idOeuvre, $titre, $titreVariante,$collection, "",$technique,"", $dimensions,$arrondissement,$coordonneeLatitude, $coordonneeLongitude);
+                        $titre=$_POST["titre"];
+                        $titreVariante=$_POST["titreVariante"];
+                        $collection=$_POST["collection"];
+                        $technique=$_POST["technique"];
+                        $dimensions=$_POST["dimensions"];
+                        $arrondissement=$_POST["arrondissement"];
+                        $coordonneeLatitude=floatval($_POST["coordonneeLatitude"]);
+                        $coordonneeLongitude=floatval($_POST["coordonneeLongitude"]);
 
-             
-                          $idCat=intval($_POST["cat"]);
 
-                          $cat->metAjourCategorieUneOeuvre($idOeuvre, $idCat);
-                          
 
-                          $idArtiste = intval($_POST["artiste"]);
-                          $artiste->metAjourArtisteUneOeuvre($idOeuvre, $idArtiste);
-                
-                
-                          $idMat = intval($_POST["mat"]);
-                          $mat->metAjourMaterielUneOeuvre($idOeuvre, $idMat);
-                
-                          
-                          $idAdresse = intval($_POST["idAdre"]);
-                          $numRue = $_POST["numRue"];
-                          $nomRue = $_POST["nomRue"];
-                          $adresse->metAjourAdresseUneOeuvre($idAdresse, $numRue, $nomRue);  
+                        $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
+                        $oeuvre->modifieUneOeuvre($idOeuvre, $titre, $titreVariante,$collection, "",$technique,"", $dimensions,$arrondissement,$coordonneeLatitude, $coordonneeLongitude);
 
-                     
-                            echo '<script language="Javascript">
-                            <!--
-                            document.location.replace("index.php?page=adminModifSupp");
-                            // -->
-                            </script>';
+
+                        $idCat=intval($_POST["cat"]);
+
+                        $cat->metAjourCategorieUneOeuvre($idOeuvre, $idCat);
+
+
+                        $idArtiste = intval($_POST["artiste"]);
+                        $artiste->metAjourArtisteUneOeuvre($idOeuvre, $idArtiste);
+
+
+                        $idMat = intval($_POST["mat"]);
+                        $mat->metAjourMaterielUneOeuvre($idOeuvre, $idMat);
+
+
+                        $idAdresse = intval($_POST["idAdre"]);
+                        $numRue = $_POST["numRue"];
+                        $nomRue = $_POST["nomRue"];
+                        $adresse->metAjourAdresseUneOeuvre($idAdresse, $numRue, $nomRue);  
+
+
+                        echo '<script language="Javascript">
+                        <!--
+                        document.location.replace("index.php?page=adminModifSupp");
+                        // -->
+                        </script>';
                     
             }
 
@@ -756,7 +759,7 @@ class Controler
       private function adminValideOeuvre()
             {
                 $oVue = new VueAdmin();
-                $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+                $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
                 $listeOeuvres=$oeuvre->afficheOeuvresNonValides();
                 $oVue->AdminTopPage();
                 $oVue->adminNavSide();
@@ -923,7 +926,7 @@ class Controler
                 $categorie= new Categorie("","","","","","");
                 $idCategorie=$categorie->recuperIdCaT($ouvre["SousCategorieObjet"]);
 
-                $ouvrePublique = new Oeuvre("", $ouvre["Titre"], $ouvre["TitreVariante"], $ouvre["NomCollection"], $ouvre["NomCollectionAng"], $ouvre["Technique"], $ouvre["TechniqueAng"], $ouvre["DimensionsGenerales"], $ouvre["Arrondissement"], $ouvre["CoordonneeLatitude"], $ouvre["CoordonneeLongitude"], "", $dernierIdAdresse, $idArtiste, $idCategorie, "");
+                $ouvrePublique = new Oeuvre("", $ouvre["Titre"], $ouvre["TitreVariante"], $ouvre["NomCollection"], $ouvre["NomCollectionAng"], $ouvre["Technique"], $ouvre["TechniqueAng"], $ouvre["DimensionsGenerales"], $ouvre["Arrondissement"], $ouvre["CoordonneeLatitude"], $ouvre["CoordonneeLongitude"], "", $dernierIdAdresse, $idArtiste, $idCategorie, "","");
                 
                 if (!empty($ouvre["Titre"]) && !$ouvrePublique->existOuvres()) {
                     $ouvrePublique->enregistreOuvresAdmin(); 
@@ -1157,41 +1160,41 @@ class Controler
             if(isset($_POST['ajoutPhoto']))
             {
                 
-                  $idCat = intval($_POST['ajoutPhoto']);                
+                $idCat = intval($_POST['ajoutPhoto']);
+
+                
+
+                $tmpFilePath = $_FILES['upload']['tmp_name'];
+  
+
+                        if ($tmpFilePath != "")
+                        {
+
+                            $newFilePath = 'images/categories/' . $_FILES['upload']['name'];
+
+                            if(!move_uploaded_file($tmpFilePath, $newFilePath)) 
+                            {
+
+                                    echo "Erreur";
+
+                            }
+
+                            else
+
+                            {
+                                        $cat->ajoutImageCat($idCat, $newFilePath);
+
+
+                                        echo '<script language="Javascript">
+                                        <!--
+                                        document.location.replace("index.php?page=admin");
+                                        // -->
+                                        </script>';
+                            }
+                        }
                     
-                  $y1=$_POST['top'];
-                  $x1=$_POST['left'];
-                  $w=$_POST['right'];
-                  $h=$_POST['bottom'];
-                  $image = $_FILES['upload']['tmp_name'];
-                
+                    
 
-                  list( $width,$height ) = getimagesize( $image );
-                  $newwidth = 600;
-                  $newheight = 400;
-
-                  $thumb = imagecreatetruecolor( $newwidth, $newheight );
-                  $source = imagecreatefromjpeg($image);
-
-                  imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-                  imagejpeg($thumb,$image,100); 
-
-
-                  $im = imagecreatefromjpeg($image);
-                  $dest = imagecreatetruecolor($w,$h);
-
-                  imagecopyresampled($dest,$im,0,0,$x1,$y1,$w,$h,$w,$h);
-                  imagejpeg($dest,"images/categories/". $_FILES['upload']['name'], 100);
-                  $newFilePath = "images/categories/". $_FILES['upload']['name'];
-                
-                  $cat->ajoutImageCat($idCat, $newFilePath);
-
-
-                     echo '<script language="Javascript">
-                     <!--
-                     document.location.replace("index.php?page=admin");
-                     // -->
-                     </script>';
         
         }
 
@@ -1207,7 +1210,7 @@ class Controler
         {
             $oVue = new VueAdmin();
 
-            $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","");
+             $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
             $listeOeuvre=$oeuvre->afficheListeOeuvresSansPhotoPresentation();
             
             $oVue->AdminTopPage();
@@ -1218,50 +1221,46 @@ class Controler
 
             
             if(isset($_POST['ajoutPhoto']))
-                {
+            {
                 
-                  $idOeuvre = intval($_POST['ajoutPhoto']);
-                
-                  $y1=$_POST['top'];
-                  $x1=$_POST['left'];
-                  $w=$_POST['right'];
-                  $h=$_POST['bottom'];
-                  $image = $_FILES['upload']['tmp_name'];
-                
+                $idOeuvre = intval($_POST['ajoutPhoto']);
 
-                  list( $width,$height ) = getimagesize( $image );
-                  $newwidth = 600;
-                  $newheight = 400;
+                $tmpFilePath = $_FILES['upload']['tmp_name'];
+  
 
-                  $thumb = imagecreatetruecolor( $newwidth, $newheight );
-                  $source = imagecreatefromjpeg($image);
+                        if ($tmpFilePath != "")
+                        {
 
-                  imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-                  imagejpeg($thumb,$image,100); 
+                            $newFilePath = 'images/oeuvres/' . $_FILES['upload']['name'];
 
+                            if(!move_uploaded_file($tmpFilePath, $newFilePath)) 
+                            {
 
-                  $im = imagecreatefromjpeg($image);
-                  $dest = imagecreatetruecolor($w,$h);
+                                    echo "Erreur";
 
-                  imagecopyresampled($dest,$im,0,0,$x1,$y1,$w,$h,$w,$h);
-                  imagejpeg($dest,"images/oeuvres/P_". $_FILES['upload']['name'], 100);
-                  $newFilePath = "images/oeuvres/P_". $_FILES['upload']['name'];
-                
-                  $oeuvre->ajoutImagePresentation($idOeuvre, $newFilePath);
+                            }
+
+                            else
+
+                            {
+                                        $oeuvre->ajoutImagePresentation($idOeuvre, $newFilePath);
 
 
-                     echo '<script language="Javascript">
-                     <!--
-                     document.location.replace("index.php?page=admin");
-                     // -->
-                     </script>';
-                
-                }
+                                        echo '<script language="Javascript">
+                                        <!--
+                                        document.location.replace("index.php?page=admin");
+                                        // -->
+                                        </script>';
+                            }
+                        }
+                    
+                    
+
+        
+        }
 
 
     }
-    
-    
     
 
 
