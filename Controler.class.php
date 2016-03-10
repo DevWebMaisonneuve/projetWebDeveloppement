@@ -812,6 +812,24 @@ class Controler
                 $arrondissement=$_POST["arrondissement"];
                 $numRue = $_POST["numRue"];
                 $nomRue = $_POST["nomRue"];
+                $materiaux=$_POST['materiaux'];
+                
+//                 if(isset($_POST['materiaux']))
+//                {
+//                    $materiauxParties = preg_split("/[&]+/", $_POST['materiaux']);                    
+//
+//                    if(count($materiauxParties)){
+//
+//                        for($i=0; $i<count($materiauxParties); $i++){
+//
+//                            $unMateriaux=new Materiaux("",$materiauxParties[$i], "");                   
+//                            
+//                            if (!$unMateriaux->existMateriaux()){
+//                                $unMateriaux->enregistreMateriaux();   
+//                            } 
+//                        }
+//                    }
+//                }    
                 
                  if(isset($_POST['materiaux']))
                 {
@@ -837,6 +855,25 @@ class Controler
                 $oeuvre = new Oeuvre("", "", "", "" ,"" ,"", "", "", "", "", "", "", "","","","","");
                 $oeuvre->modifieUneOeuvre($idOeuvre, $titre, $titreVariante,$collection, "",$technique,"", $dimensions,$arrondissement,$arrayLatLong['lat'], $arrayLatLong['lon']);
 
+                 if(isset($materiaux))
+                {
+                    $materiauxParties = preg_split("/[&]+/", $_POST['materiaux']);                    
+
+                    if(count($materiauxParties)){
+
+                        for($i=0; $i<count($materiauxParties); $i++){
+
+                            $unMateriaux=new Materiaux("",$materiauxParties[$i], "");   
+                            var_dump($unMateriaux);
+                            
+                            if (!$unMateriaux->existMateriaux()){
+                                $unMateriaux->enregistreMateriaux(); 
+                                $idMateriel = $unMateriaux->recupererDernierId();
+                                $oeuvre->enregistreEst_composee($idOeuvre, $idMateriel);
+                            } 
+                        }
+                    }
+                }
 
                 $idCat=intval($_POST["cat"]);
 

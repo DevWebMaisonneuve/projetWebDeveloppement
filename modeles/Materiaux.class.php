@@ -282,7 +282,13 @@
                  self::$database->bind(":IdMat",$idMat);
 
                  self::$database->execute();
-             }
+    }
+    
+    public function recupererDernierId(){
+
+        return (self::$database->dernierId());
+        
+      }
         
 
     }
